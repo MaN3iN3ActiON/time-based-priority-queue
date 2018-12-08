@@ -35,7 +35,6 @@ class PriorityQueue {
 		if (last > 0) {
 			this._swap(0, last);
 		}
-		//array pop
 		this._heap.pop();
 		this.sink();
 		return ret;

@@ -3,14 +3,11 @@ const path = require('path');
 const parse = require('csv-parse');
 const PriorityQueue = require('./pq');
 const dateFormat = require('dateformat');
-//read in arguments from command line
 
 const [file = 'input.csv', startTimeString = 0] = [...process.argv.slice(2)];
 const startTime = dateFormat(startTimeString);
 const stms = Date.parse(startTime);
 
-//process csv file
-//create min hash with key as time(ms) and for same start times use priority
 const parser = parse({
 	delimiter: ',',
 	quote: '"',
