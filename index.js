@@ -5,7 +5,7 @@ const PriorityQueue = require('./pq');
 const dateFormat = require('dateformat');
 const chalk = require('chalk');
 
-const [file = 'input.csv', startTimeString = 0] = [...process.argv.slice(2)];
+const [file = 'input.csv', startTimeString = '0'] = [...process.argv.slice(2)];
 const startTime = dateFormat(startTimeString);
 const stms = Date.parse(startTime);
 
@@ -25,8 +25,10 @@ const data = new PriorityQueue();
 fs.createReadStream(path.join(__dirname, file))
 	.pipe(parser)
 	.on('data', ({ event_name, time_to_expire, priority = 0 }) => {
+		//priority if not given it is set to 0
 		const formatedTime = dateFormat(time_to_expire);
 		const ctms = Date.parse(formatedTime);
+		priority = parseInt(priority,10);
 		if (ctms > stms) {
 			data.push({ name: event_name, tte: formatedTime, priority });
 		}
