@@ -9,6 +9,7 @@
   "author": "nagasiva",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^2.4.1",
     "csv-parse": "^4.1.0",
     "dateformat": "^3.0.3"
   }
